@@ -1,0 +1,201 @@
+{% load static %}
+{% load common_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="{% static 'test_site/css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+      <title>NASA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid cont">
+
+       <div class="row header">
+           <div class="row align-items-center">
+
+               <div class="col-1 text-center d-md-none burg">
+                   <img src="{% static 'test_site/img/burger.svg' %}" id="burger" onclick="myFunction()"  >
+
+
+                   <div id="myDropdown" class=" dropdown-content">
+                        {% for m in menu %}
+
+                            <a href="#" class=" link-menu" >{{m}}</a>
+
+                        {% endfor %}
+
+                   </div>
+               </div>
+
+               <div class="col-3 text-center logo">
+
+                  <img src="{% static 'test_site/img/Vector.png' %}" id="log" >
+               </div>
+
+               <div class="col   justify-content-center  nav">
+                    <div class="d-none d-md-block">
+                       {% for m in menu %}
+                             <a href="#" class="link-menu" >{{m}}</a>
+                        {% endfor %}
+                    </div>
+               </div>
+
+               <div class="col-2   auth">
+                    <button type="button" class="btn btn-primary   btn-auth">Вход</button>
+               </div>
+
+           </div>
+
+       </div>
+
+       <div class="row content ">
+                <div class="container-fluid ">
+                   <div class="row text">
+                       <div class="col-6 offset-3">
+                           <div class="row text-center text-h">
+                               <h1>Космическое агенство</h1>
+                           </div>
+                           <div class="row text-center description">
+                               Национальное управление по аэронавтике и исследованию космического пространства — ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно президенту США.
+                           </div>
+                       </div>
+                   </div>
+                </div>
+
+
+           <div class="row  r-picture ">
+
+                <div class="col-12 col-lg-5  offset-0 offset-lg-1  ">
+                    <div class="row text-center tier-1">
+
+                        <div class="col">
+                            <img src="{% static 'test_site/img/shuttle.svg' %}" class="shuttle" >
+                            <h3>Спейс шаттлы —пилотируемые корабли</h3>
+
+                        </div>
+                        <div class="col">
+                            <img src="{% static 'test_site/img/telescope.svg' %}" class="telescope" >
+                            <h3>Лучшее телескопическое оборудование</h3>
+                        </div>
+
+                    </div>
+                    <div class="row text-center tier-2">
+                        <div class="col ">
+                            <img src="{% static 'test_site/img/stars-fill.svg' %}" class=" stars-fill" >
+                            <h3 >Целимся на Луну и Марс</h3>
+                        </div>
+                        <div class="col text-center">
+                            <img src="{% static 'test_site/img/medal.svg' %}" class=" medal" >
+                            <h3 >Золотая медаль по научным исследованиям</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+               <div class="col-12 col-lg-5 pic text-center">
+                   <img src="{% static 'test_site/img/foto.svg' %}" class="img-fluid foto" >
+               </div>
+
+           </div>
+
+       </div>
+        <div class="row justify-content-center slider text-center">
+            <h2>Фотографии</h2>
+            <div class="col-12 col-md-8 mt-5 text-center slider-for colslide" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    {% show_slider %}
+            </div>
+
+                <div class="col-12 col-md-10 mt-5  slider-nav ">
+                    {% show_slider %}
+                </div>
+
+        </div>
+
+    </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class=" modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                  </div>
+                  <div class="modal-body text-center">
+                    <div class=" slider-modal">
+                    {% show_slider %}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>
+
+
+<script>
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+    if (!event.target.matches('#burger')) {
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
+        for (i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+
+ $(".slider-for").slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  centerMode: true,
+  speed: 500,
+  arrows: false,
+  fade: true,
+  asNavFor: $(".slider-modal, .slider-nav ")
+});
+$(".slider-nav").slick({
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  speed: 500,
+  asNavFor: $(".slider-modal, .slider-for "),
+  dots: false,
+  centerMode: true,
+  variableWidth: true,
+  focusOnSelect: true,
+  prevArrow: '<img  src="{% static 'test_site/img/arrow.svg' %}" class=" arrow" >',
+  nextArrow: '<img src="{% static 'test_site/img/prearrow.svg' %}" class=" prearrow" >'
+});
+
+$('.slider-modal').slick({
+    arrows: true,
+    asNavFor: $(".slider-nav, .slider-for ")
+    });
+
+$('.slider-for').click(function(){
+    setTimeout(load, 200);
+});
+function load(){
+   $(".slider-modal").slick('setPosition');
+}
+
+</script>
